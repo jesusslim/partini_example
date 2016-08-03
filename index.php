@@ -8,7 +8,7 @@
 
 require "Lib/Vendor/autoload.php";
 require_once("Middleware/Auth.php");
-require_once("Lib/Vendor/Utils/EasyMysql.php");
+require_once("Middleware/Test.php");
 require_once("Home/Controllers/Test.php");
 
 use Partini\Application;
@@ -20,9 +20,9 @@ $app->addConfig(require('Home/config.php'));
 //exception handler
 $e_h = new ExceptionHandler($app);
 //map cache handler
-$app->map('cache',\Cache\Redis::class);
+$app->mapSingleton('cache',\Partini\Cache\Redis::class);
 //map db handler
-$app->map('db',\Db\Mysqli::class);
+$app->mapSingleton('db',\Partini\Db\Mysqli::class);
 //init router
 $router = new \Partini\Router\Router($app);
 $app->mapData('router',$router);
@@ -30,6 +30,14 @@ require('Home/routes.php');
 //run web app
 $router->handle();
 
+//run use coroutine
+//require_once("Lib/Vendor/jesusslim/partini/Partini/Coroutine/Task.php");
+//require_once("Lib/Vendor/jesusslim/partini/Partini/Coroutine/Signal.php");
+//require_once("Lib/Vendor/jesusslim/partini/Partini/Coroutine/Scheduler.php");
+//
+//$gen = $router->handleUseCoroutine();
+//$task = new \Coroutine\Task($gen,$app);
+//$task->run();
 
 /***** Example of inject chains *****/
 
