@@ -46,7 +46,7 @@ class Test extends Controller
     }
 
     //test for middleware
-    public function test6(){
-        return "reach";
+    public function test6(Request $req){
+        return "reach & test_add = ".$req->get('test_add');
     }
 }

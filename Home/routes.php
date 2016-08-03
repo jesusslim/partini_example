@@ -13,4 +13,4 @@ Routes::get('test2','test2',Test::class);
 Routes::get('test3','test3',Test::class);
 Routes::get('test4','test4',Test::class);
 Routes::get('test5','test5',Test::class);
-Routes::get('test6','test6',Test::class)->mid(\Middleware\Auth::class);
+Routes::get('test6','test6',Test::class)->mid(\Middleware\Auth::class,\Middleware\Test::class);
