@@ -10,7 +10,7 @@ namespace Middleware;
 
 
 use Partini\ApplicationInterface;
-use Partini\Http\Request;
+use Partini\HttpContext\Context;
 
 class Auth
 {
@@ -22,12 +22,12 @@ class Auth
         $this->context = $context;
     }
 
-    public function handle(Request $request,$next){
+    public function handle(Context $ctx,$next){
         $auth = $this->context->getConfig('AUTH_KEY');
-        if($request->get('token') !== $auth){
+        if($ctx->input()->get('token') !== $auth){
             return 'Token err';
         }else{
-            return $next($request);
+            return $next($ctx);
         }
     }
 

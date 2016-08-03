@@ -10,9 +10,14 @@ require "Lib/Vendor/autoload.php";
 require_once("Middleware/Auth.php");
 require_once("Middleware/Test.php");
 require_once("Home/Controllers/Test.php");
+require_once("Home/Controllers/TestHttpContext.php");
 
 use Partini\Application;
 use Partini\ExceptionHandler;
+
+//test new
+
+//end
 
 $app = new Application();
 //load config
@@ -24,6 +29,7 @@ $app->mapSingleton('cache',\Partini\Cache\Redis::class);
 //map db handler
 $app->mapSingleton('db',\Partini\Db\Mysqli::class);
 //init router
+$app->mapSingleton(\Partini\HttpContext\Context::class,\Partini\HttpContext\Context::class);
 $router = new \Partini\Router\Router($app);
 $app->mapData('router',$router);
 require('Home/routes.php');
