@@ -7,10 +7,6 @@
  */
 
 require "Lib/Vendor/autoload.php";
-require_once("Middleware/Auth.php");
-require_once("Middleware/Test.php");
-require_once("Home/Controllers/Test.php");
-require_once("Home/Controllers/TestHttpContext.php");
 
 use Partini\Application;
 use Partini\ExceptionHandler;
