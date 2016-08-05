@@ -11,6 +11,7 @@ namespace Home\Controllers;
 
 use Partini\Application;
 use Partini\HttpContext\Controller;
+use Partini\MiddleWare\Session;
 
 class TestHttpContext extends Controller
 {
@@ -26,5 +27,14 @@ class TestHttpContext extends Controller
     public function setCookie(){
         $this->ctx()->setCookie('test2','hhhh2',1*60);
         return "ok";
+    }
+
+    public function setSession(){
+        $_SESSION['slimik'] = 'gxg';
+        return 'ok';
+    }
+
+    public function session(){
+        return $_SESSION['slimik'];
     }
 }

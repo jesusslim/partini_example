@@ -9,6 +9,8 @@
 namespace Home\Controllers;
 
 
+use Partini\Application;
+use Partini\Config;
 use Partini\HttpContext\Controller;
 
 class Test extends Controller
@@ -29,7 +31,8 @@ class Test extends Controller
 
     //test for read config
     public function test3($config){
-        return "123".$config->get('HELLO');
+        return Config::read('AUTH_KEY');
+//        return "123".$config->get('HELLO');
     }
 
     //test for cache
