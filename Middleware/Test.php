@@ -9,14 +9,14 @@
 namespace Middleware;
 
 
-use Partini\Http\Request;
+use Partini\HttpContext\Context;
 
 class Test
 {
 
-    public function handle(Request $req,$next){
-        $req->set('test_add','jjjasdjkjalkdj');
-        return $next($req);
+    public function handle(Context $ctx,$next){
+        $ctx->stash('test_add','jjjasdjkjalkdj');
+        return $next($ctx);
     }
 
 }

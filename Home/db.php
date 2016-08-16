@@ -14,12 +14,12 @@ return array(
     'REDIS_PREFIX' => 'Partini_',
 
     //db
-    'DB_HOST' => '127.0.0.1',
-    'DB_USER' => 'test',
-    'DB_PWD' => 'jesusslim',
-    'DB_PORT' => '3306',
-    'DB_NAME' => 'partini',
-    'DB_PREFIX' => 'pt_',
+//    'DB_HOST' => '127.0.0.1',
+//    'DB_USER' => 'test',
+//    'DB_PWD' => 'jesusslim',
+//    'DB_PORT' => '3306',
+//    'DB_NAME' => 'partini',
+//    'DB_PREFIX' => 'pt_',
 
     //for the example of auth in middleware
     'AUTH_KEY' => '123'

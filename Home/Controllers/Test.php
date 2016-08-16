@@ -9,28 +9,30 @@
 namespace Home\Controllers;
 
 
-use Partini\Http\Controller;
-use Partini\Http\Request;
+use Partini\Application;
+use Partini\Config;
+use Partini\HttpContext\Controller;
 
 class Test extends Controller
 {
 
     //test for redirect
     public function test(){
-        return $this->redirect('http://www.google.com');
+        return $this->ctx()->redirect('http://www.google.com');
     }
 
     //test for inject Request
-    public function test2(Request $req){
+    public function test2(){
         return $this->json(array(
             'status' => 1,
-            'data' => "Param id is ".$req->get('id')
+            'data' => "Param id is ".$this->context->input()->get('id')
         ));
     }
 
     //test for read config
     public function test3($config){
-        return "123".$config->get('HELLO');
+        return Config::read('AUTH_KEY');
+//        return "123".$config->get('HELLO');
     }
 
     //test for cache
@@ -41,12 +43,12 @@ class Test extends Controller
 
     //test for db
     public function test5($db){
-        $r = $db->query('select * from pt_students where id = 12345');
+        $r = $db->query('select * from ebk_students where id = 10017');
         return $this->json($r);
     }
 
     //test for middleware
-    public function test6(Request $req){
-        return "reach & test_add = ".$req->get('test_add');
+    public function test6(){
+        return "reach & the test_add is ".$this->context->getStash('test_add');
     }
 }

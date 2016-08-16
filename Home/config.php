@@ -13,5 +13,8 @@ return array(
     'EXT' => ['Home/test.php','Home/db.php'],
 
     'APP_DEBUG' => false,
-    'ROUTE_PATH' => 'Home/routes.php'
+    'ROUTE_PATH' => 'Home/routes.php',
+
+    'SESSION_ENABLE' => true,
+    'SESSION_PREFIX' => 'session_partini_'
 );

@@ -7,12 +7,13 @@
  */
 
 require "Lib/Vendor/autoload.php";
-require_once("Middleware/Auth.php");
-require_once("Middleware/Test.php");
-require_once("Home/Controllers/Test.php");
 
 use Partini\Application;
 use Partini\ExceptionHandler;
+
+//test new
+
+//end
 
 $app = new Application();
 //load config
@@ -23,7 +24,10 @@ $e_h = new ExceptionHandler($app);
 $app->mapSingleton('cache',\Partini\Cache\Redis::class);
 //map db handler
 $app->mapSingleton('db',\Partini\Db\Mysqli::class);
+//map session provider
+$app->mapSingleton(\Partini\Session\SessionProviderInterface::class,\Partini\Session\Redis::class);
 //init router
+$app->mapSingleton(\Partini\HttpContext\Context::class,\Partini\HttpContext\Context::class);
 $router = new \Partini\Router\Router($app);
 $app->mapData('router',$router);
 require('Home/routes.php');
